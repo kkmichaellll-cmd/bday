@@ -548,43 +548,35 @@
     // ─── SLIDE DATA ───────────────────────────────────────────────────────────
     // Replace `src` with your own image URLs or file paths.
     // Caption text can be anything you like!
-    const slides = [
-      {
-        src: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80",
-        caption: "From the very beginning…",
-        tilt: "-2deg"
-      },
-      {
-        src: "https://images.unsplash.com/photo-1464349095431-e9a21285b5f3?w=600&q=80",
-        caption: "Every laugh we shared 😄",
-        tilt: "1.5deg"
-      },
-      {
-        src: "https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=600&q=80",
-        caption: "Adventures & little moments ✨",
-        tilt: "-1deg"
-      },
-      {
-        src: "https://images.unsplash.com/photo-1467810563316-b5476525c0f9?w=600&q=80",
-        caption: "All the places we've been 🌍",
-        tilt: "2.5deg"
-      },
-      {
-        src: "https://images.unsplash.com/photo-1513151233558-d860c5398176?w=600&q=80",
-        caption: "You light up every room 🕯️",
-        tilt: "-2deg"
-      },
-      {
-        src: "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=600&q=80",
-        caption: "So grateful you were born 🎉",
-        tilt: "1deg"
-      },
-      {
-        src: "https://images.unsplash.com/photo-1558636508-e0db3814bd1d?w=600&q=80",
-        caption: "Here's to many more years! 🥂",
-        tilt: "-1.5deg"
-      }
-    ];
+  const slides = [
+  { "src": "0e8b2b5f-4888-4147-a4b9-30f78752db17.JPG", "caption": "", "tilt": "-2deg" },
+  { "src": "15b78aaa-7c4e-4383-8b64-c46160677f1e.JPG", "caption": "", "tilt": "1.5deg" },
+  { "src": "26a5d4d7-79ad-468f-b8d8-38321c84b881.JPG", "caption": "", "tilt": "-1deg" },
+  { "src": "30c96741-b57c-4c2c-b6fb-c68dd674e4a8.JPG", "caption": "", "tilt": "2deg" },
+  { "src": "4bc4f72b-4e1d-4a7c-bc56-74e6e03bfeca.JPG", "caption": "", "tilt": "-1.5deg" },
+  { "src": "63e3c96e-e5fc-48d2-aa88-0204b2a66fac.JPG", "caption": "", "tilt": "1deg" },
+  { "src": "647aaee0-1444-47eb-8206-79713bcaf5fc.JPG", "caption": "", "tilt": "-2deg" },
+  { "src": "6f3acb4c-7920-499f-a22a-faa8fbbbd950.JPG", "caption": "", "tilt": "1.5deg" },
+  { "src": "6ff6b78d-33cd-4942-8f30-e01696e6240d.JPG", "caption": "", "tilt": "-1deg" },
+  { "src": "768b87e9-abca-4540-a56d-dda5607a042b.JPG", "caption": "", "tilt": "2deg" },
+  { "src": "83852837-0d1a-4fc4-8e6a-1e8a2a23aa29.JPG", "caption": "", "tilt": "-1.5deg" },
+  { "src": "87052247-b181-4608-a2fd-e6fcbaf4158f.JPG", "caption": "", "tilt": "1deg" },
+  { "src": "91896231-ae52-4c7c-93ee-156e0a74e11a.JPG", "caption": "", "tilt": "-2deg" },
+  { "src": "92fe5ba6-292b-4048-9a0a-105fb9423eda.JPG", "caption": "", "tilt": "1.5deg" },
+  { "src": "9c5305a0-501e-4406-8d8c-3529e259f688.JPG", "caption": "", "tilt": "-1deg" },
+  { "src": "IMG_0375.PNG", "caption": "", "tilt": "2deg" },
+  { "src": "IMG_0376.PNG", "caption": "", "tilt": "-1.5deg" },
+  { "src": "IMG_0377.PNG", "caption": "", "tilt": "1deg" },
+  { "src": "a01d702f-83b8-431a-b359-54a108800e8b.JPG", "caption": "", "tilt": "-2deg" },
+  { "src": "a01d702f-83b8-431a-b359-54a108800e8b.JPG", "caption": "", "tilt": "1.5deg" },
+  { "src": "a152ea99-f24c-4836-a403-8c0cf538d254.JPG", "caption": "", "tilt": "-1deg" },
+  { "src": "a8bb712a-c62c-423a-b6a1-a28a6bb4d9fc.JPG", "caption": "", "tilt": "2deg" },
+  { "src": "be365ea9-040a-4aef-8b27-b8baddc9e15c.JPG", "caption": "", "tilt": "-1.5deg" },
+  { "src": "cba01c10-84c0-4876-9a79-36c2ff7018e4.JPG", "caption": "", "tilt": "1deg" },
+  { "src": "dc50f10c-7ff3-4a92-85e5-b216e9848917.JPG", "caption": "", "tilt": "-2deg" },
+  { "src": "e60370a2-597c-4461-9939-cb0fc3588af8.JPG", "caption": "", "tilt": "1.5deg" },
+  { "src": "fabb2933-cd56-4e53-b48c-a3e8d3a53cfc.JPG", "caption": "", "tilt": "-1deg" }
+]
     // ─────────────────────────────────────────────────────────────────────────
 
     const stage = document.getElementById('stage');
@@ -644,7 +636,7 @@
       card.style.setProperty('--tilt', s.tilt);
       card.innerHTML = `
         <div class="photo-frame">
-          <img src="${s.src}" alt="Memory ${i+1}" loading="${i === 0 ? 'eager' : 'lazy'}"/>
+          <img src="./${s.src}" alt="Memory ${i+1}" loading="${i === 0 ? 'eager' : 'lazy'}"/>
         </div>
         <span class="slide-stamp">${String(i+1).padStart(2,'0')} / ${String(slides.length).padStart(2,'0')}</span>
         <div class="caption"><p>${s.caption}</p></div>
