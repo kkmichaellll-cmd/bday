@@ -219,6 +219,38 @@
       letter-spacing: 0.01em;
     }
 
+    /* Swipe indicator */
+    .swipe-indicator {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: clamp(10px, 2vh, 16px);
+      z-index: 1;
+      pointer-events: none;
+      animation: fadeIn 0.8s 1.2s ease both;
+      transition: opacity 0.5s ease;
+    }
+    .swipe-indicator.gone { opacity: 0; }
+    .swipe-arrow {
+      color: rgba(255,255,255,0.6);
+      font-size: clamp(1rem, 3.5vw, 1.3rem);
+      animation: nudge 1.6s ease-in-out infinite;
+    }
+    .swipe-arrow.left  { animation-direction: reverse; }
+    .swipe-arrow.right { animation-direction: normal; }
+    .swipe-label {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(0.85rem, 3.2vw, 1rem);
+      color: rgba(255,255,255,0.6);
+      letter-spacing: 0.12em;
+      text-transform: lowercase;
+    }
+    @keyframes nudge {
+      0%, 100% { transform: translateX(0); opacity: 0.6; }
+      50%       { transform: translateX(5px); opacity: 1; }
+    }
+
     /* Final message */
     .final-msg {
       display: none;
@@ -410,6 +442,12 @@
 
   <div class="stage" id="stage"></div>
 
+  <div class="swipe-indicator" id="swipeIndicator">
+    <span class="swipe-arrow left">&lsaquo;</span>
+    <span class="swipe-label">swipe</span>
+    <span class="swipe-arrow right">&rsaquo;</span>
+  </div>
+
 
   <div class="final-msg" id="finalMsg">
     <h2>Happy Birthday! 🎂</h2>
@@ -470,12 +508,20 @@
     const musicBtn      = document.getElementById('musicBtn');
     const welcomeScreen = document.getElementById('welcomeScreen');
     const welcomeBtn    = document.getElementById('welcomeBtn');
+    const swipeIndicator = document.getElementById('swipeIndicator');
 
     let current       = 0;
     let transitioning = false;
     let musicStarted  = false;
     let muted         = false;
     let autoTimer     = null;
+    let hintGone      = false;
+
+    function dismissHint() {
+      if (hintGone) return;
+      hintGone = true;
+      swipeIndicator.classList.add('gone');
+    }
 
     // ── How long each slide stays visible (milliseconds) ─────────────────
     const AUTOPLAY_DELAY = 4000;
@@ -568,6 +614,7 @@
     function goTo(dir) {
       if (transitioning) return;
       pauseAutoplay();
+      dismissHint();
 
       const cards = getCards();
       const next  = dir === 'next' ? current + 1 : current - 1;
